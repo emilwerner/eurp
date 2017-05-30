@@ -1,0 +1,28 @@
+CREATE TABLE [dbo].[Artists]
+(
+	[Id] uniqueidentifier NOT NULL PRIMARY KEY DEFAULT NEWID(),
+	[Country] nvarchar(MAX) NOT NULL,
+	[Name] nvarchar(MAX) NOT NULL
+)
+
+
+CREATE TABLE [dbo].[Vote]
+(
+	[Id] uniqueidentifier NOT NULL PRIMARY KEY DEFAULT NEWID(),
+	[SenderName] nvarchar(max) NOT NULL,
+	[P12] nvarchar(max) not null,
+	[P10] nvarchar(max) not null,
+	[P8] nvarchar(max) not null,
+	[P7] nvarchar(max) not null,
+	[P6] nvarchar(max) not null,
+	[P5] nvarchar(max) not null,
+	[P4] nvarchar(max) not null,
+	[P3] nvarchar(max) not null,
+	[P2] nvarchar(max) not null,
+	[P1] nvarchar(max) not null
+)
+
+
+insert into Artists(id, country, [name])
+Values(NEWID(), '', '')
+

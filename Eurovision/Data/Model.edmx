@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EurovisionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Order" Type="int" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SenderName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P12" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P10" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P8" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P7" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P6" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P5" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P4" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P1" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EurovisionModelStoreContainer">
+          <EntitySet Name="Artists" EntityType="Self.Artists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EurovisionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="EurovisionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artists" EntityType="Self.Artist" />
+          <EntitySet Name="Votes" EntityType="EurovisionModel.Vote" />
+        </EntityContainer>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SenderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P12" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P10" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P8" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P7" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P6" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P5" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EurovisionModelStoreContainer" CdmEntityContainer="EurovisionEntities">
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="EurovisionModel.Artist">
+              <MappingFragment StoreEntitySet="Artists">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="EurovisionModel.Vote">
+              <MappingFragment StoreEntitySet="Vote">
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="P4" ColumnName="P4" />
+                <ScalarProperty Name="P5" ColumnName="P5" />
+                <ScalarProperty Name="P6" ColumnName="P6" />
+                <ScalarProperty Name="P7" ColumnName="P7" />
+                <ScalarProperty Name="P8" ColumnName="P8" />
+                <ScalarProperty Name="P10" ColumnName="P10" />
+                <ScalarProperty Name="P12" ColumnName="P12" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
